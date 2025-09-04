@@ -108,9 +108,4 @@ Every HTML file follows a standard structure:
 
 ---
 
-## 💡 Instructor Notes
-
-* Encourage students to **share screenshots** of their first webpage.
-* Debugging tip: If Live Server isn’t working, right-click the HTML file → **Open with Live Server**.
-* Prepare students for **Week 2-3: HTML Deep Dive**.
 
