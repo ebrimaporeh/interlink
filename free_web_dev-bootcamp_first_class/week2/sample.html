@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 HTML Deep Dive - Classwork</title>
+</head>
+<body>
+    <header role="banner">
+        <h1>HTML Deep Dive Classwork</h1>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#semantic">Semantic HTML</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#accessibility">Accessibility</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section id="semantic">
+            <h2>Part 1: Semantic HTML</h2>
+            <p>Creating a webpage section using semantic HTML elements.</p>
+            
+            <header>
+                <h1>My Personal Website</h1>
+                <nav aria-label="Site navigation">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <section>
+                <h2>My Favorite Hobby: Photography</h2>
+                <p>I love capturing moments and scenes through my camera lens. Photography allows me to express my creativity and see the world from different perspectives.</p>
+            </section>
+            
+            <article>
+                <h2>My First Blog Post</h2>
+                <p>Today I learned about semantic HTML and how it improves accessibility and SEO. Semantic elements like &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, and &lt;footer&gt; make the web more meaningful for both humans and machines.</p>
+            </article>
+            
+            <footer>
+                <p>Contact me at: student@example.com</p>
+            </footer>
+        </section>
+
+        <section id="forms">
+            <h2>Part 2: Forms</h2>
+            <p>Building a simple registration form with proper labeling.</p>
+            
+            <form action="/submit" method="POST">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div>
+                    <label>
+                        <input type="checkbox" name="terms" required> I agree to terms and conditions
+                    </label>
+                </div>
+                
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section id="tables">
+            <h2>Part 3: Tables</h2>
+            <p>Creating a table of favorite books with proper structure.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>To Kill a Mockingbird</td>
+                        <td>Harper Lee</td>
+                        <td>1960</td>
+                    </tr>
+                    <tr>
+                        <td>1984</td>
+                        <td>George Orwell</td>
+                        <td>1949</td>
+                    </tr>
+                    <tr>
+                        <td>The Great Gatsby</td>
+                        <td>F. Scott Fitzgerald</td>
+                        <td>1925</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="multimedia">
+            <h2>Part 4: Multimedia</h2>
+            <p>Embedding audio and video content with fallback messages.</p>
+            
+            <h3>Video Example</h3>
+            <video width="320" controls>
+                <source src="sample-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <h3>Audio Example</h3>
+            <audio controls>
+                <source src="sample-audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <section id="accessibility">
+            <h2>Part 5: Accessibility</h2>
+            <p>Implementing accessibility best practices.</p>
+            
+            <h3>Image with Alt Text</h3>
+            <img src="logo.png" alt="Company logo featuring a stylized tree with the text 'Nature Solutions'">
+            
+            <h3>Accessible Button</h3>
+            <button aria-label="Close navigation menu">X</button>
+            
+            <h3>Form with Proper Labeling</h3>
+            <form>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" aria-describedby="username-help">
+                    <p id="username-help">Your username must be at least 6 characters long.</p>
+                </div>
+                
+                <div>
+                    <label for="newsletter">Subscribe to newsletter:</label>
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>Week 2 HTML Deep Dive Classwork</p>
+        <p>Created by: Student Name</p>
+    </footer>
+</body>
+</html>

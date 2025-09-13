@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Elements Reference</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            width: 300px;
+            font-size: 1rem;
+        }
+        
+        .category-filter {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            background-color: white;
+        }
+        
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .element-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .element-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tag {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2575fc;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        
+        .attributes {
+            font-size: 0.9rem;
+            color: #6a11cb;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .explanation {
+            margin-bottom: 15px;
+        }
+        
+        .example {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+        
+        .category {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .elements-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-box, .category-filter {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML Elements Reference</h1>
+            <p class="description">A comprehensive guide to HTML elements with their tags, attributes, and explanations.</p>
+        </header>
+        
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search elements..." id="searchInput">
+            <select class="category-filter" id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="text">Text Content</option>
+                <option value="form">Forms & Input</option>
+                <option value="media">Media & Embedding</option>
+                <option value="semantic">Semantic</option>
+                <option value="metadata">Metadata</option>
+                <option value="sectioning">Sectioning</option>
+                <option value="interactive">Interactive</option>
+            </select>
+        </div>
+        
+        <div class="elements-grid" id="elementsGrid">
+            <!-- Elements will be inserted here by JavaScript -->
+        </div>
+        
+        <footer>
+            <p>Created as a reference for HTML developers. This is not an exhaustive list but includes the most commonly used elements.</p>
+        </footer>
+    </div>
+
+    <script>
+        const elements = [
+            {
+                tag: "<html>",
+                attributes: "lang",
+                explanation: "Root element of an HTML page",
+                example: "<html lang=\"en\">...</html>",
+                category: "root"
+            },
+            {
+                tag: "<head>",
+                attributes: "",
+                explanation: "Container for metadata and document information",
+                example: "<head><title>Page Title</title></head>",
+                category: "metadata"
+            },
+            {
+                tag: "<title>",
+                attributes: "",
+                explanation: "Defines the title of the document",
+                example: "<title>My Web Page</title>",
+                category: "metadata"
+            },
+            {
+                tag: "<body>",
+                attributes: "",
+                explanation: "Contains the visible content of the document",
+                example: "<body><h1>Content</h1></body>",
+                category: "sectioning"
+            },
+            {
+                tag: "<h1> to <h6>",
+                attributes: "",
+                explanation: "Defines HTML headings from largest (h1) to smallest (h6)",
+                example: "<h1>Main Heading</h1>",
+                category: "text"
+            },
+            {
+                tag: "<p>",
+                attributes: "",
+                explanation: "Defines a paragraph",
+                example: "<p>This is a paragraph.</p>",
+                category: "text"
+            },
+            {
+                tag: "<a>",
+                attributes: "href, target, rel",
+                explanation: "Defines a hyperlink",
+                example: "<a href=\"https://example.com\">Link</a>",
+                category: "text"
+            },
+            {
+                tag: "<img>",
+                attributes: "src, alt, width, height",
+                explanation: "Embeds an image",
+                example: "<img src=\"image.jpg\" alt=\"Description\">",
+                category: "media"
+            },
+            {
+                tag: "<ul>",
+                attributes: "",
+                explanation: "Defines an unordered list",
+                example: "<ul><li>Item</li></ul>",
+                category: "text"
+            },
+            {
+                tag: "<ol>",
+                attributes: "start, type",
+                explanation: "Defines an ordered list",
+                example: "<ol><li>First item</li></ol>",
+                category: "text"
+            },
+            {
+                tag: "<li>",
+                attributes: "value",
+                explanation: "Defines a list item",
+                example: "<li>List item</li>",
+                category: "text"
+            },
+            {
+                tag: "<div>",
+                attributes: "",
+                explanation: "Defines a division or section",
+                example: "<div>Content section</div>",
+                category: "sectioning"
+            },
+            {
+                tag: "<span>",
+                attributes: "",
+                explanation: "Defines an inline container",
+                example: "<span>Inline content</span>",
+                category: "text"
+            },
+            {
+                tag: "<br>",
+                attributes: "",
+                explanation: "Produces a line break",
+                example: "Line one<br>Line two",
+                category: "text"
+            },
+            {
+                tag: "<hr>",
+                attributes: "",
+                explanation: "Defines a thematic break or horizontal rule",
+                example: "<hr>",
+                category: "sectioning"
+            },
+            {
+                tag: "<table>",
+                attributes: "",
+                explanation: "Defines a table",
+                example: "<table>...</table>",
+                category: "text"
+            },
+            {
+                tag: "<tr>",
+                attributes: "",
+                explanation: "Defines a table row",
+                example: "<tr><td>Data</td></tr>",
+                category: "text"
+            },
+            {
+                tag: "<td>",
+                attributes: "colspan, rowspan",
+                explanation: "Defines a table cell",
+                example: "<td>Cell data</td>",
+                category: "text"
+            },
+            {
+                tag: "<th>",
+                attributes: "colspan, rowspan, scope",
+                explanation: "Defines a table header cell",
+                example: "<th>Header</th>",
+                category: "text"
+            },
+            {
+                tag: "<form>",
+                attributes: "action, method, target",
+                explanation: "Defines an HTML form for user input",
+                example: "<form action=\"/submit\" method=\"post\">...</form>",
+                category: "form"
+            },
+            {
+                tag: "<input>",
+                attributes: "type, name, value, placeholder, required",
+                explanation: "Defines an input control",
+                example: "<input type=\"text\" name=\"username\">",
+                category: "form"
+            },
+            {
+                tag: "<textarea>",
+                attributes: "name, rows, cols, placeholder",
+                explanation: "Defines a multiline input control",
+                example: "<textarea name=\"message\"></textarea>",
+                category: "form"
+            },
+            {
+                tag: "<button>",
+                attributes: "type, disabled",
+                explanation: "Defines a clickable button",
+                example: "<button type=\"submit\">Submit</button>",
+                category: "form"
+            },
+            {
+                tag: "<select>",
+                attributes: "name, multiple, size",
+                explanation: "Defines a drop-down list",
+                example: "<select name=\"cars\"><option>Volvo</option></select>",
+                category: "form"
+            },
+            {
+                tag: "<option>",
+                attributes: "value, selected",
+                explanation: "Defines an option in a drop-down list",
+                example: "<option value=\"volvo\">Volvo</option>",
+                category: "form"
+            },
+            {
+                tag: "<label>",
+                attributes: "for",
+                explanation: "Defines a label for an input element",
+                example: "<label for=\"username\">Username:</label>",
+                category: "form"
+            },
+            {
+                tag: "<fieldset>",
+                attributes: "disabled, form, name",
+                explanation: "Groups related elements in a form",
+                example: "<fieldset><legend>Personal Info</legend>...</fieldset>",
+                category: "form"
+            },
+            {
+                tag: "<legend>",
+                attributes: "",
+                explanation: "Defines a caption for a fieldset element",
+                example: "<legend>Personal Info</legend>",
+                category: "form"
+            },
+            {
+                tag: "<style>",
+                attributes: "media, type",
+                explanation: "Defines style information for a document",
+                example: "<style>body { h1: 50px; }</style>",
+                category: "metadata"
+            },
+           
+            {
+                tag: "<meta>",
+                attributes: "name, content, charset",
+                explanation: "Defines metadata about an HTML document",
+                example: "<meta name=\"description\" content=\"Page description\">",
+                category: "metadata"
+            },
+            {
+                tag: "<link>",
+                attributes: "href, rel, type",
+                explanation: "Defines the relationship between a document and an external resource",
+                example: "<link rel=\"stylesheet\" href=\"styles.css\">",
+                category: "metadata"
+            },
+            {
+                tag: "<header>",
+                attributes: "",
+                explanation: "Defines a header for a document or section",
+                example: "<header><h1>Page Title</h1></header>",
+                category: "semantic"
+            },
+            {
+                tag: "<footer>",
+                attributes: "",
+                explanation: "Defines a footer for a document or section",
+                example: "<footer><p>Copyright info</p></footer>",
+                category: "semantic"
+            },
+            {
+                tag: "<nav>",
+                attributes: "",
+                explanation: "Defines navigation links",
+                example: "<nav><a href=\"/home\">Home</a></nav>",
+                category: "semantic"
+            },
+            {
+                tag: "<section>",
+                attributes: "",
+                explanation: "Defines a section in a document",
+                example: "<section><h2>Section Heading</h2></section>",
+                category: "semantic"
+            },
+            {
+                tag: "<article>",
+                attributes: "",
+                explanation: "Defines an independent, self-contained content",
+                example: "<article><h2>Article Title</h2></article>",
+                category: "semantic"
+            },
+            {
+                tag: "<aside>",
+                attributes: "",
+                explanation: "Defines content aside from the page content",
+                example: "<aside><p>Sidebar content</p></aside>",
+                category: "semantic"
+            },
+            {
+                tag: "<main>",
+                attributes: "",
+                explanation: "Specifies the main content of a document",
+                example: "<main><h1>Main Content</h1></main>",
+                category: "semantic"
+            },
+            {
+                tag: "<figure>",
+                attributes: "",
+                explanation: "Specifies self-contained content",
+                example: "<figure><img src=\"image.jpg\"><figcaption>Caption</figcaption></figure>",
+                category: "semantic"
+            },
+            {
+                tag: "<figcaption>",
+                attributes: "",
+                explanation: "Defines a caption for a figure element",
+                example: "<figcaption>Image caption</figcaption>",
+                category: "semantic"
+            },
+            {
+                tag: "<video>",
+                attributes: "src, controls, width, height, autoplay",
+                explanation: "Embeds video content",
+                example: "<video src=\"movie.mp4\" controls></video>",
+                category: "media"
+            },
+            {
+                tag: "<audio>",
+                attributes: "src, controls, autoplay, loop",
+                explanation: "Embeds sound content",
+                example: "<audio src=\"audio.mp3\" controls></audio>",
+                category: "media"
+            },
+            {
+                tag: "<iframe>",
+                attributes: "src, width, height, frameborder",
+                explanation: "Embeds an external webpage",
+                example: "<iframe src=\"https://example.com\"></iframe>",
+                category: "media"
+            },
+            {
+                tag: "<canvas>",
+                attributes: "width, height",
+                explanation: "Used to draw graphics via scripting",
+                example: "<canvas id=\"myCanvas\"></canvas>",
+                category: "media"
+            },
+            {
+                tag: "<svg>",
+                attributes: "width, height",
+                explanation: "Defines a container for SVG graphics",
+                example: "<svg width=\"100\" height=\"100\"><circle cx=\"50\" cy=\"50\" r=\"40\"/></svg>",
+                category: "media"
+            },
+            {
+                tag: "<details>",
+                attributes: "open",
+                explanation: "Defines additional details that the user can view or hide",
+                example: "<details><summary>Click me</summary><p>Content</p></details>",
+                category: "interactive"
+            },
+            {
+                tag: "<summary>",
+                attributes: "",
+                explanation: "Defines a visible heading for a details element",
+                example: "<summary>Click to expand</summary>",
+                category: "interactive"
+            },
+            {
+                tag: "<dialog>",
+                attributes: "open",
+                explanation: "Defines a dialog box or window",
+                example: "<dialog open>This is a dialog</dialog>",
+                category: "interactive"
+            },
+            {
+                tag: "<b>",
+                attributes: "",
+                explanation: "Defines bold text without extra importance",
+                example: "<b>Bold text</b>",
+                category: "text"
+            },
+            {
+                tag: "<strong>",
+                attributes: "",
+                explanation: "Defines important text",
+                example: "<strong>Important text</strong>",
+                category: "text"
+            },
+            {
+                tag: "<i>",
+                attributes: "",
+                explanation: "Defines a part of text in an alternate voice or mood",
+                example: "<i>Italic text</i>",
+                category: "text"
+            },
+            {
+                tag: "<em>",
+                attributes: "",
+                explanation: "Defines emphasized text",
+                example: "<em>Emphasized text</em>",
+                category: "text"
+            },
+            {
+                tag: "<mark>",
+                attributes: "",
+                explanation: "Defines marked/highlighted text",
+                example: "<mark>Highlighted text</mark>",
+                category: "text"
+            },
+            {
+                tag: "<small>",
+                attributes: "",
+                explanation: "Defines smaller text",
+                example: "<small>Small text</small>",
+                category: "text"
+            },
+            {
+                tag: "<sub>",
+                attributes: "",
+                explanation: "Defines subscripted text",
+                example: "H<sub>2</sub>O",
+                category: "text"
+            },
+            {
+                tag: "<sup>",
+                attributes: "",
+                explanation: "Defines superscripted text",
+                example: "X<sup>2</sup>",
+                category: "text"
+            },
+            {
+                tag: "<code>",
+                attributes: "",
+                explanation: "Defines a piece of computer code",
+                example: "<code>console.log('Hello');</code>",
+                category: "text"
+            },
+            {
+                tag: "<pre>",
+                attributes: "",
+                explanation: "Defines preformatted text",
+                example: "<pre>Text with   spaces and\nline breaks</pre>",
+                category: "text"
+            },
+            {
+                tag: "<blockquote>",
+                attributes: "cite",
+                explanation: "Defines a section that is quoted from another source",
+                example: "<blockquote cite=\"source.html\">Quote text</blockquote>",
+                category: "text"
+            },
+            {
+                tag: "<cite>",
+                attributes: "",
+                explanation: "Defines the title of a work",
+                example: "<cite>The Book Title</cite>",
+                category: "text"
+            },
+            {
+                tag: "<abbr>",
+                attributes: "title",
+                explanation: "Defines an abbreviation or acronym",
+                example: "<abbr title=\"World Health Organization\">WHO</abbr>",
+                category: "text"
+            },
+            {
+                tag: "<address>",
+                attributes: "",
+                explanation: "Defines contact information for the author/owner of a document",
+                example: "<address>Written by <a href=\"mailto:john@example.com\">John Doe</a>.</address>",
+                category: "text"
+            },
+            {
+                tag: "<time>",
+                attributes: "datetime",
+                explanation: "Defines a specific time (or datetime)",
+                example: "<time datetime=\"2023-01-01\">New Year's Day</time>",
+                category: "text"
+            },
+            {
+                tag: "<progress>",
+                attributes: "value, max",
+                explanation: "Represents the progress of a task",
+                example: "<progress value=\"70\" max=\"100\">70%</progress>",
+                category: "interactive"
+            },
+            {
+                tag: "<meter>",
+                attributes: "value, min, max, low, high, optimum",
+                explanation: "Defines a scalar measurement within a known range",
+                example: "<meter value=\"0.6\">60%</meter>",
+                category: "interactive"
+            }
+        ];
+
+        const elementsGrid = document.getElementById('elementsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+
+        // Render all elements initially
+        renderElements(elements);
+
+        // Add event listeners for filtering
+        searchInput.addEventListener('input', filterElements);
+        categoryFilter.addEventListener('change', filterElements);
+
+      function renderElements(elementsArray) {
+    elementsGrid.innerHTML = '';
+
+    elementsArray.forEach(element => {
+        const card = document.createElement('div');
+        card.className = 'element-card';
+
+        // Escape < and > so the tag and example show as text
+        const tagString = element.tag.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        const exampleString = element.example
+            ? element.example.replace(/</g, "&lt;").replace(/>/g, "&gt;")
+            : 'No example available';
+
+        card.innerHTML = `
+            <div class="tag">${tagString}</div>
+            <div class="attributes">${element.attributes || 'No specific attributes'}</div>
+            <div class="explanation">${element.explanation}</div>
+            <div class="example">${exampleString}</div>
+            <div class="category">${element.category}</div>
+        `;
+
+        elementsGrid.appendChild(card);
+    });
+}
+
+
+        function filterElements() {
+            const searchText = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            
+            const filteredElements = elements.filter(element => {
+                const matchesSearch = element.tag.toLowerCase().includes(searchText) || 
+                                     element.explanation.toLowerCase().includes(searchText);
+                const matchesCategory = category === 'all' || element.category === category;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            renderElements(filteredElements);
+        }
+    </script>
+</body>
+</html>
