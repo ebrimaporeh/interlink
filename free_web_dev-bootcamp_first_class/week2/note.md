@@ -110,17 +110,7 @@ Ensuring your site is accessible to all users, including those using assistive t
   <button aria-label="Close menu">X</button>
   ```
 
-## Assignment
 
-Rebuild [Motherfuckingwebsite.com](https://motherfuckingwebsite.com/) or a similar ultra-minimalist site focusing on semantic HTML, forms, tables, multimedia, and accessibility.
-
-### Marking Criteria (20 pts)
-
-* **Proper structure:** 10 pts – Correct use of `<html>`, `<head>`, `<body>`, and organized content sections.
-* **Semantic tags:** 5 pts – Correct use of `<header>`, `<section>`, `<article>`, etc.
-* **Accessibility:** 5 pts – Use of `alt` text, ARIA labels, and semantic elements for screen readers.
-
----
 
 **Tips:**
 

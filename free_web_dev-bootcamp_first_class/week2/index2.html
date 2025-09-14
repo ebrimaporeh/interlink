@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 HTML Deep Dive - Classwork</title>
+    <style>
+        /* Week 2-3 HTML Deep Dive Classwork - Embedded CSS */
+        
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #2980b9;
+            margin-top: 1.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin-top: 1.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header[role="banner"] {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header[role="banner"] h1 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        nav[role="navigation"] ul {
+            display: flex;
+            list-style-type: none;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav[role="navigation"] a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background-color: #3498db;
+            transition: background-color 0.3s;
+        }
+
+        nav[role="navigation"] a:hover,
+        nav[role="navigation"] a:focus {
+            background-color: #2980b9;
+            outline: none;
+        }
+
+        /* Main Content */
+        main[role="main"] {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #ffffff;
+        }
+
+        section h2 {
+            margin-top: 0;
+        }
+
+        /* Semantic HTML Example */
+        #semantic header {
+            background-color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        #semantic nav ul {
+            display: flex;
+            list-style-type: none;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        #semantic nav a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        #semantic nav a:hover {
+            text-decoration: underline;
+        }
+
+        #semantic section, 
+        #semantic article {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+
+        #semantic footer {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 4px;
+        }
+
+        /* Forms */
+        form {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        form div {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        button[type="submit"] {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9f7fe;
+        }
+
+        /* Multimedia */
+        video, audio {
+            display: block;
+            margin: 1rem 0;
+            max-width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Accessibility Section */
+        #accessibility img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 4px;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        #accessibility button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1rem 0;
+            transition: background-color 0.3s;
+        }
+
+        #accessibility button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Footer */
+        footer[role="contentinfo"] {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            nav[role="navigation"] ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            main[role="main"] {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Focus indicators for accessibility */
+        a:focus,
+        button:focus,
+        input:focus {
+            outline: 2px solid #3498db;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            body {
+                background-color: white;
+                color: black;
+            }
+            
+            nav[role="navigation"] a {
+                border: 2px solid white;
+            }
+            
+            section {
+                border: 2px solid black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <h1>HTML Deep Dive Classwork</h1>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#semantic">Semantic HTML</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#accessibility">Accessibility</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section id="semantic">
+            <h2>Part 1: Semantic HTML</h2>
+            <p>Creating a webpage section using semantic HTML elements.</p>
+            
+            <header>
+                <h1>My Personal Website</h1>
+                <nav aria-label="Site navigation">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <section>
+                <h2>My Favorite Hobby: Photography</h2>
+                <p>I love capturing moments and scenes through my camera lens. Photography allows me to express my creativity and see the world from different perspectives.</p>
+            </section>
+            
+            <article>
+                <h2>My First Blog Post</h2>
+                <p>Today I learned about semantic HTML and how it improves accessibility and SEO. Semantic elements like &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, and &lt;footer&gt; make the web more meaningful for both humans and machines.</p>
+            </article>
+            
+            <footer>
+                <p>Contact me at: student@example.com</p>
+            </footer>
+        </section>
+
+        <section id="forms">
+            <h2>Part 2: Forms</h2>
+            <p>Building a simple registration form with proper labeling.</p>
+            
+            <form action="/submit" method="POST">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div>
+                    <label>
+                        <input type="checkbox" name="terms" required> I agree to terms and conditions
+                    </label>
+                </div>
+                
+                <button type="submit">Register</button>
+            </form>
+        </section>
+
+        <section id="tables">
+            <h2>Part 3: Tables</h2>
+            <p>Creating a table of favorite books with proper structure.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>To Kill a Mockingbird</td>
+                        <td>Harper Lee</td>
+                        <td>1960</td>
+                    </tr>
+                    <tr>
+                        <td>1984</td>
+                        <td>George Orwell</td>
+                        <td>1949</td>
+                    </tr>
+                    <tr>
+                        <td>The Great Gatsby</td>
+                        <td>F. Scott Fitzgerald</td>
+                        <td>1925</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="multimedia">
+            <h2>Part 4: Multimedia</h2>
+            <p>Embedding audio and video content with fallback messages.</p>
+            
+            <h3>Video Example</h3>
+            <video width="320" controls>
+                <source src="sample-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <h3>Audio Example</h3>
+            <audio controls>
+                <source src="sample-audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <section id="accessibility">
+            <h2>Part 5: Accessibility</h2>
+            <p>Implementing accessibility best practices.</p>
+            
+            <h3>Image with Alt Text</h3>
+            <img src="logo.png" alt="Company logo featuring a stylized tree with the text 'Nature Solutions'">
+            
+            <h3>Accessible Button</h3>
+            <button aria-label="Close navigation menu">X</button>
+            
+            <h3>Form with Proper Labeling</h3>
+            <form>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" aria-describedby="username-help">
+                    <p id="username-help">Your username must be at least 6 characters long.</p>
+                </div>
+                
+                <div>
+                    <label for="newsletter">Subscribe to newsletter:</label>
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>Week 2 HTML Deep Dive Classwork</p>
+        <p>Created by: Student Name</p>
+    </footer>
+</body>
+</html>
