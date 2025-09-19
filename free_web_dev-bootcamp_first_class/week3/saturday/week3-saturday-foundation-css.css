@@ -1,0 +1,210 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Selectors demonstration */
+#selectors p {
+    color: #666;
+    margin: 10px 0;
+}
+
+#selectors .highlight {
+    background-color: yellow;
+    padding: 5px;
+}
+
+#selectors #special {
+    font-weight: bold;
+    color: purple;
+}
+
+#selectors [data-type="example"] {
+    border-left: 3px solid green;
+    padding-left: 10px;
+}
+
+#selectors a {
+    color: blue;
+    text-decoration: none;
+}
+
+#selectors a:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+/* Units demonstration */
+.unit-demo {
+    margin: 15px 0;
+}
+
+.unit-demo div {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+}
+
+.pixel-box {
+    width: 200px;
+}
+
+.percent-box {
+    width: 50%;
+}
+
+.viewport-box {
+    width: 50vw;
+}
+
+.em-box {
+    font-size: 2em; /* Relative to parent font size */
+}
+
+.rem-box {
+    font-size: 2rem; /* Relative to root font size */
+}
+
+/* Colors demonstration */
+.color-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.hex {
+    background-color: #ff5733;
+}
+
+.rgb {
+    background-color: rgb(51, 153, 255);
+}
+
+.rgba {
+    background-color: rgba(51, 153, 255, 0.7);
+}
+
+.hsl {
+    background-color: hsl(120, 100%, 50%);
+}
+
+.hsla {
+    background-color: hsla(120, 100%, 50%, 0.7);
+}
+
+.linear-gradient {
+    background: linear-gradient(to right, #ff5733, #ffbd33);
+}
+
+.radial-gradient {
+    background: radial-gradient(circle, #33ff57, #339cff);
+}
+
+/* Box model demonstration */
+.box-model-demo {
+    margin: 15px 0;
+}
+
+.box {
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    border: 5px solid #333;
+    margin: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 60px; /* Adjusted for padding */
+}
+
+.content-box {
+    box-sizing: content-box; /* Default: width = content only */
+    background-color: lightblue;
+}
+
+.border-box {
+    box-sizing: border-box; /* width = content + padding + border */
+    background-color: lightgreen;
+}
+
+/* Display types demonstration */
+.display-demo {
+    margin: 15px 0;
+}
+
+.display-box {
+    padding: 10px;
+    margin: 5px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+}
+
+.block {
+    display: block;
+    background-color: lightcoral;
+}
+
+.inline {
+    display: inline;
+    background-color: lightblue;
+}
+
+.inline-block {
+    display: inline-block;
+    background-color: lightgreen;
+    width: 150px;
+}
+
+/* Overflow demonstration */
+.overflow-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.overflow-box {
+    width: 200px;
+    height: 150px;
+    border: 2px solid #333;
+    padding: 10px;
+}
+
+.overflow-box h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.visible {
+    overflow: visible;
+    background-color: #ffe6e6;
+}
+
+.hidden {
+    overflow: hidden;
+    background-color: #e6ffe6;
+}
+
+.scroll {
+    overflow: scroll;
+    background-color: #e6e6ff;
+}
+
+.auto {
+    overflow: auto;
+    background-color: #ffffe6;
+}

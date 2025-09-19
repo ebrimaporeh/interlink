@@ -1,0 +1,286 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Positioning demo */
+.position-demo {
+    position: relative;
+    min-height: 400px;
+    margin-bottom: 20px;
+}
+
+.position-box {
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    margin: 10px;
+    background-color: lightblue;
+    border: 2px solid darkblue;
+    text-align: center;
+}
+
+.static {
+    position: static;
+}
+
+.relative {
+    position: relative;
+    top: 20px;
+    background-color: lightgreen;
+}
+
+.position-wrapper {
+    position: relative;
+    height: 120px;
+    background-color: #f0f0f0;
+    border: 1px dashed #999;
+    margin: 20px 0;
+}
+
+.absolute {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: lightcoral;
+    width: 130px;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: lightgoldenrodyellow;
+    z-index: 1000;
+}
+
+.sticky-demo {
+    margin-top: 30px;
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: lightpink;
+    padding: 10px;
+    border: 2px solid darkred;
+    z-index: 10;
+}
+
+.content {
+    height: 800px;
+    padding: 10px;
+}
+
+/* z-index demo */
+.z-index-demo {
+    position: relative;
+    height: 200px;
+}
+
+.z-box {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.z-box.first {
+    background-color: rgba(255, 0, 0, 0.7);
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+.z-box.second {
+    background-color: rgba(0, 255, 0, 0.7);
+    top: 50px;
+    left: 50px;
+    z-index: 2;
+}
+
+.z-box.third {
+    background-color: rgba(0, 0, 255, 0.7);
+    top: 80px;
+    left: 80px;
+    z-index: 3;
+}
+
+/* Float demo */
+.float-demo {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.float-left {
+    float: left;
+    margin: 0 15px 10px 0;
+}
+
+.float-right {
+    float: right;
+    margin: 0 0 10px 15px;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Flexbox demo */
+.flex-demo {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 15px 0;
+    min-height: 100px;
+    border: 1px solid #ccc;
+}
+
+.flex-item {
+    background-color: lightblue;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid darkblue;
+}
+
+/* Flex direction */
+.direction {
+    flex-direction: row;
+}
+
+/* Justify content */
+.justify {
+    justify-content: space-between;
+}
+
+/* Align items */
+.align {
+    align-items: center;
+    height: 150px;
+}
+
+/* Flex item properties */
+.items .grow-1 {
+    flex-grow: 1;
+}
+
+.items .grow-2 {
+    flex-grow: 2;
+    background-color: lightgreen;
+}
+
+.items .no-shrink {
+    flex-shrink: 0;
+    background-color: lightcoral;
+}
+
+.items .order-last {
+    order: 5;
+    background-color: lightyellow;
+}
+
+.items .order-first {
+    order: -1;
+    background-color: lightpink;
+}
+
+/* Grid demo */
+.grid-demo {
+    display: grid;
+    gap: 10px;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.grid-item {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid darkblue;
+    text-align: center;
+}
+
+/* Basic grid */
+.basic {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+}
+
+/* Grid areas */
+.areas {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 80px 1fr 80px;
+    grid-template-areas: 
+        "header header"
+        "sidebar content"
+        "footer footer";
+    height: 300px;
+}
+
+.areas .header {
+    grid-area: header;
+    background-color: lightpink;
+}
+
+.areas .sidebar {
+    grid-area: sidebar;
+    background-color: lightgreen;
+}
+
+.areas .content {
+    grid-area: content;
+    background-color: lightyellow;
+}
+
+.areas .footer {
+    grid-area: footer;
+    background-color: lightgray;
+}
+
+/* Advanced grid */
+.advanced {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}

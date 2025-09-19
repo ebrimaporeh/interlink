@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - CSS Layout & Positioning</title>
+    <link rel="stylesheet" href="week3-sunday-position-layout-css.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Layout & Positioning</h1>
+        
+        <section id="positioning">
+            <h2>Positioning</h2>
+            
+            <div class="position-demo">
+                <div class="position-box static">Static (default)</div>
+                <div class="position-box relative">Relative (+20px from top)</div>
+                <div class="position-wrapper">
+                    <div class="position-box absolute">Absolute (top-right of parent)</div>
+                </div>
+                <div class="position-box fixed">Fixed (bottom-right of viewport)</div>
+                
+                <div class="sticky-demo">
+                    <h3>Sticky Positioning Demo</h3>
+                    <div class="sticky-header">Sticky Header (scroll down)</div>
+                    <div class="content">
+                        <p>Scroll to see the sticky header in action...</p>
+                        <p>(Content placeholder to enable scrolling)</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <p>Laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                        <p>Esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <p>Excepteur sint occaecat cupidatat non proident.</p>
+                        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="z-index">
+            <h2>z-index & Stacking Context</h2>
+            <div class="z-index-demo">
+                <div class="z-box first">z-index: 1</div>
+                <div class="z-box second">z-index: 2</div>
+                <div class="z-box third">z-index: 3</div>
+            </div>
+        </section>
+        
+        <section id="floats">
+            <h2>Floats (Legacy Layout)</h2>
+            <div class="float-demo clearfix">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJsaWdodGJsdWUiIC8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzMzMiPjEwMHgxMDA8L3RleHQ+PC9zdmc+" alt="Demo image" class="float-left">
+                <p>This text wraps around the floated image. Floats were commonly used for layouts before Flexbox and Grid were widely supported. This is a demonstration of how text flows around a floated element.</p>
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJsaWdodGdyZWVuIiAvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzMzIj4xMDB4MTAwPC90ZXh0Pjwvc3ZnPg==" alt="Demo image" class="float-right">
+                <p>Multiple floats can be used together. This second paragraph demonstrates text wrapping around an image floated to the right. Notice how the text flows between the two floated images.</p>
+            </div>
+        </section>
+        
+        <section id="flexbox">
+            <h2>Flexbox</h2>
+            
+            <h3>Flex Direction</h3>
+            <div class="flex-demo direction">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <h3>Justify Content</h3>
+            <div class="flex-demo justify">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <h3>Align Items</h3>
+            <div class="flex-demo align">
+                <div class="flex-item">Item 1<br>Two lines</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3<br>Has<br>Multiple<br>Lines</div>
+            </div>
+            
+            <h3>Flex Items Properties</h3>
+            <div class="flex-demo items">
+                <div class="flex-item grow-1">grow: 1</div>
+                <div class="flex-item grow-2">grow: 2</div>
+                <div class="flex-item no-shrink">won't shrink</div>
+                <div class="flex-item order-last">order: 5</div>
+                <div class="flex-item order-first">order: -1</div>
+            </div>
+        </section>
+        
+        <section id="grid">
+            <h2>CSS Grid</h2>
+            
+            <h3>Basic Grid</h3>
+            <div class="grid-demo basic">
+                <div class="grid-item">Item 1</div>
+                <div class="grid-item">Item 2</div>
+                <div class="grid-item">Item 3</div>
+                <div class="grid-item">Item 4</div>
+                <div class="grid-item">Item 5</div>
+                <div class="grid-item">Item 6</div>
+            </div>
+            
+            <h3>Grid Areas</h3>
+            <div class="grid-demo areas">
+                <div class="grid-item header">Header</div>
+                <div class="grid-item sidebar">Sidebar</div>
+                <div class="grid-item content">Content</div>
+                <div class="grid-item footer">Footer</div>
+            </div>
+            
+            <h3>Advanced Grid: auto-fit & minmax()</h3>
+            <div class="grid-demo advanced">
+                <div class="grid-item">Item 1</div>
+                <div class="grid-item">Item 2</div>
+                <div class="grid-item">Item 3</div>
+                <div class="grid-item">Item 4</div>
+                <div class="grid-item">Item 5</div>
+                <div class="grid-item">Item 6</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery Assignment - Comprehensive Example</title>
+    <meta name="description" content="A comprehensive HTML-only page demonstrating advanced HTML elements: forms, tables, multimedia, semantic elements, and accessibility features.">
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header role="banner">
+        <h1 id="page-title">HTML Mastery Assignment</h1>
+        <p>Demonstrating advanced HTML elements and techniques</p>
+
+        <nav aria-label="Main navigation">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#semantics">Semantic Elements</a></li>
+                <li><a href="#html5">Other HTML5 Elements</a></li>
+                <li><a href="#iframe">Embedded Content</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" role="main">
+        <!-- FORMS SECTION -->
+        <section id="forms" aria-labelledby="forms-heading">
+            <h2 id="forms-heading">Advanced Forms</h2>
+            
+            <article aria-labelledby="reg-heading">
+                <h3 id="reg-heading">User Registration & Profile</h3>
+                <form id="registration" action="#" method="post" enctype="multipart/form-data" autocomplete="on" novalidate>
+                    <fieldset>
+                        <legend>Account & Login</legend>
+                        
+                        <label for="username">Username (5–12 alphanumeric):</label>
+                        <input type="text" id="username" name="username" required minlength="5" maxlength="12"
+                            pattern="[A-Za-z0-9]{5,12}" 
+                            title="5 to 12 characters. Letters (A–Z) and numbers only. No spaces or symbols."
+                            autocomplete="username" placeholder="yourusername123">
+                        <br>
+                        
+                        <label for="email">Email address:</label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com" autocomplete="email">
+                        <br>
+                        
+                        <label for="password">Password (min 8 chars):</label>
+                        <input type="password" id="password" name="password" required minlength="8" 
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                            title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters"
+                            autocomplete="new-password">
+                        <br>
+                        
+                        <label for="phone">Phone (format: 123-456-7890):</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                            title="Format: 123-456-7890" placeholder="123-456-7890" autocomplete="tel">
+                        <br>
+                        
+                        <label for="birthdate">Birth Date:</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                        <br>
+                        
+                        <label for="favcolor">Favorite Color:</label>
+                        <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+                        <br>
+                        
+                        <label for="volume">Volume Level (0-100):</label>
+                        <input type="range" id="volume" name="volume" min="0" max="100">
+                        <br>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Additional Information</legend>
+                        
+                        <label for="bio">Biography:</label><br>
+                        <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us about yourself..."></textarea>
+                        <br>
+                        
+                        <label for="country">Country:</label>
+                        <select id="country" name="country">
+                            <option value="">Select a country</option>
+                            <option value="usa">United States</option>
+                            <option value="canada">Canada</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="australia">Australia</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <br>
+                        
+                        <label>Subscribe to:</label><br>
+                        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                        <label for="newsletter">Newsletter</label><br>
+                        
+                        <input type="checkbox" id="notifications" name="notifications" value="yes">
+                        <label for="notifications">Notifications</label>
+                        <br>
+                        
+                        <label>Account Type:</label><br>
+                        <input type="radio" id="free" name="account-type" value="free">
+                        <label for="free">Free</label><br>
+                        
+                        <input type="radio" id="premium" name="account-type" value="premium">
+                        <label for="premium">Premium</label><br>
+                        
+                        <input type="radio" id="enterprise" name="account-type" value="enterprise">
+                        <label for="enterprise">Enterprise</label>
+                        <br>
+                    </fieldset>
+                    
+                    <input type="submit" value="Register">
+                    <input type="reset" value="Clear Form">
+                </form>
+            </article>
+        </section>
+
+        <!-- TABLES SECTION -->
+        <section id="tables" aria-labelledby="tables-heading">
+            <h2 id="tables-heading">Complex Tables</h2>
+            
+            <article aria-labelledby="employee-heading">
+                <h3 id="employee-heading">Company Employee Directory</h3>
+                <table border="1" summary="Employee directory showing names, departments, salaries and status">
+                    <caption>Employee Information and Salary Data</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="2">Name</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">John</td>
+                            <td>Doe</td>
+                            <td>Marketing</td>
+                            <td>$65,000</td>
+                            <td>Full-time</td>
+                        </tr>
+                        <tr>
+                            <td>Smith</td>
+                            <td>Sales</td>
+                            <td>$72,000</td>
+                            <td>Full-time</td>
+                        </tr>
+                        <tr>
+                            <td>Jane</td>
+                            <td>Williams</td>
+                            <td>Engineering</td>
+                            <td>$85,000</td>
+                            <td>Full-time</td>
+                        </tr>
+                        <tr>
+                            <td>Robert</td>
+                            <td>Johnson</td>
+                            <td>HR</td>
+                            <td>$58,000</td>
+                            <td>Part-time</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah</td>
+                            <td>Miller</td>
+                            <td>Support</td>
+                            <td>$62,000</td>
+                            <td>Full-time</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Average Salary</td>
+                            <td>$68,400</td>
+                            <td>-</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
+            
+            <article aria-labelledby="inventory-heading">
+                <h3 id="inventory-heading">Products & Inventory</h3>
+                <table border="1" summary="Product inventory showing categories, variants, and summary totals">
+                    <caption>Inventory & Sales Report — Q3</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Variant</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Price (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">1</td>
+                            <td rowspan="2">Electronics</td>
+                            <td>Smartphone</td>
+                            <td>64GB</td>
+                            <td>120</td>
+                            <td>199.99</td>
+                        </tr>
+                        <tr>
+                            <td>Smartphone</td>
+                            <td>128GB</td>
+                            <td>85</td>
+                            <td>249.99</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Accessories</td>
+                            <td>Wireless Charger</td>
+                            <td colspan="2">Universal Qi — assorted colors</td>
+                            <td>29.99</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Software</td>
+                            <td colspan="2">Pro License (single-user)</td>
+                            <td>—</td>
+                            <td>49.00</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Books</td>
+                            <td>HTML Primer</td>
+                            <td>Paperback</td>
+                            <td>35</td>
+                            <td>19.95</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">Totals / Notes</td>
+                            <td>240+*</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">*Stock quantities approximate; this table demonstrates use of colspan/rowspan.</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
+        </section>
+
+        <!-- MULTIMEDIA SECTION -->
+        <section id="multimedia" aria-labelledby="multimedia-heading">
+            <h2 id="multimedia-heading">Multimedia Elements</h2>
+            
+            <article aria-labelledby="video-heading">
+                <h3 id="video-heading">Video Example</h3>
+                <p>HTML5 video with multiple <code>&lt;source&gt;</code> formats and accessible fallback text.</p>
+                <video width="400" controls preload="metadata" aria-describedby="video-desc">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <div id="video-desc">Sample video demonstrating multiple source formats</div>
+            </article>
+            
+            <article aria-labelledby="audio-heading">
+                <h3 id="audio-heading">Audio Example</h3>
+                <p>HTML5 audio with multiple source formats and descriptive fallback.</p>
+                <audio controls preload="metadata" aria-describedby="audio-desc">
+                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <div id="audio-desc">Sample audio with multiple source formats</div>
+            </article>
+        </section>
+
+        <!-- SEMANTIC ELEMENTS SECTION -->
+        <section id="semantics" aria-labelledby="semantics-heading">
+            <h2 id="semantics-heading">Semantic HTML5 Elements</h2>
+            
+            <article aria-labelledby="semantic-article-heading">
+                <h3 id="semantic-article-heading">Understanding Semantic HTML</h3>
+                <p>Semantic HTML introduces meaning to the web page rather than just presentation. It makes web content more accessible and helps with SEO.</p>
+                
+                <aside>
+                    <h4>Did You Know?</h4>
+                    <p>Using semantic elements can improve your website's accessibility for screen readers and other assistive technologies.</p>
+                </aside>
+                
+                <p>Here's how we've used semantic elements in this page:</p>
+                <ul>
+                    <li><code>&lt;header&gt;</code> for the introductory content</li>
+                    <li><code>&lt;nav&gt;</code> for the navigation menu</li>
+                    <li><code>&lt;main&gt;</code> for the primary content</li>
+                    <li><code>&lt;section&gt;</code> to group related content</li>
+                    <li><code>&lt;article&gt;</code> for self-contained compositions</li>
+                    <li><code>&lt;aside&gt;</code> for tangential content</li>
+                    <li><code>&lt;footer&gt;</code> for the page footer</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- OTHER HTML5 ELEMENTS SECTION -->
+        <section id="html5" aria-labelledby="html5-heading">
+            <h2 id="html5-heading">Other HTML5 Elements</h2>
+            
+            <article aria-labelledby="interactive-heading">
+                <h3 id="interactive-heading">Interactive Elements</h3>
+                
+                <details>
+                    <summary>Click to learn more about HTML5</summary>
+                    <p>HTML5 is the latest evolution of the standard that defines HTML. It includes new elements, attributes, and behaviors, and a larger set of technologies that allows more diverse and powerful websites and applications.</p>
+                </details>
+                
+                <h4>Progress Bar</h4>
+                <label for="file">Downloading progress:</label>
+                <progress id="file" value="65" max="100">65%</progress>
+                
+                <h4>Meter Element</h4>
+                <label for="fuel">Fuel level:</label>
+                <meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="40">40 out of 100</meter>
+            </article>
+        </section>
+
+        <!-- IFRAME SECTION -->
+        <section id="iframe" aria-labelledby="iframe-heading">
+            <h2 id="iframe-heading">Embedded Content (iframe)</h2>
+            
+            <article aria-labelledby="iframe-article-heading">
+                <h3 id="iframe-article-heading">Embedded Wikipedia Page</h3>
+                <p>Iframe embedding must include a descriptive <code>title</code> attribute.</p>
+                <iframe src="https://en.wikipedia.org/wiki/HTML" width="100%" height="300" title="Wikipedia page about HTML">
+                    <p>Your browser does not support iframes.</p>
+                </iframe>
+                <p>Wikipedia page about HTML embedded using an iframe</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <h2>Page Footer</h2>
+        <p>This page demonstrates advanced HTML elements and techniques as part of the HTML Mastery Assignment.</p>
+        <p>Created by: Student Name</p>
+        <p>Contact: <a href="mailto:student@example.com">student@example.com</a></p>
+        <p>&copy; 2023 HTML Mastery Assignment. All rights reserved.</p>
+        
+        <section>
+            <h3>Submission Notes</h3>
+            <p>To submit: provide the single HTML file. Ensure all form fields are present and the pattern/title attributes are included for validated inputs. No CSS or JS is allowed for this assignment.</p>
+        </section>
+    </footer>
+</body>
+</html>

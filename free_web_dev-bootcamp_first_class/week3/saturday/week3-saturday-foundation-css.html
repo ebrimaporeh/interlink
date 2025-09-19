@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - CSS Foundations</title>
+    <!-- Internal CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2 {
+            color: #333;
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .demo-box {
+            margin: 10px 0;
+        }
+    </style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="week3-saturday-foundation-css.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Foundations</h1>
+        
+        <!-- Inline CSS example -->
+        <p style="color: red; font-weight: bold;">This paragraph uses inline CSS styling.</p>
+        
+        <section id="selectors">
+            <h2>CSS Selectors</h2>
+            <p>This is a paragraph selected by element selector.</p>
+            <p class="highlight">This paragraph has a class.</p>
+            <p id="special">This paragraph has an ID.</p>
+            <p data-type="example">This paragraph has a data attribute.</p>
+            <a href="#">This link changes on hover</a>
+        </section>
+        
+        <section id="units">
+            <h2>CSS Units</h2>
+            <div class="unit-demo">
+                <div class="pixel-box">200px width</div>
+                <div class="percent-box">50% width</div>
+                <div class="viewport-box">50vw width</div>
+                <div class="em-box">2em font size</div>
+                <div class="rem-box">2rem font size</div>
+            </div>
+        </section>
+        
+        <section id="colors">
+            <h2>Colors & Gradients</h2>
+            <div class="color-demo">
+                <div class="color-box hex">HEX</div>
+                <div class="color-box rgb">RGB</div>
+                <div class="color-box rgba">RGBA</div>
+                <div class="color-box hsl">HSL</div>
+                <div class="color-box hsla">HSLA</div>
+                <div class="color-box linear-gradient">Linear Gradient</div>
+                <div class="color-box radial-gradient">Radial Gradient</div>
+            </div>
+        </section>
+        
+        <section id="box-model">
+            <h2>Box Model</h2>
+            <div class="box-model-demo">
+                <div class="box content-box">Content Box (default)</div>
+                <div class="box border-box">Border Box</div>
+            </div>
+        </section>
+        
+        <section id="display">
+            <h2>Display Types</h2>
+            <div class="display-demo">
+                <div class="display-box block">Block Element</div>
+                <span class="display-box inline">Inline Element</span>
+                <span class="display-box inline-block">Inline-Block Element</span>
+            </div>
+        </section>
+        
+        <section id="overflow">
+            <h2>Overflow</h2>
+            <div class="overflow-demo">
+                <div class="overflow-box visible">
+                    <h3>Visible (default)</h3>
+                    <p>This content overflows its container but remains visible outside the box boundaries.</p>
+                </div>
+                <div class="overflow-box hidden">
+                    <h3>Hidden</h3>
+                    <p>This content overflows its container but is clipped and hidden from view.</p>
+                </div>
+                <div class="overflow-box scroll">
+                    <h3>Scroll</h3>
+                    <p>This content overflows its container and shows scrollbars regardless of need.</p>
+                </div>
+                <div class="overflow-box auto">
+                    <h3>Auto</h3>
+                    <p>This content overflows its container and shows scrollbars only when needed.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
