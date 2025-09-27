@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox & Grid Visual Learning Tool</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin: 50px 0 25px;
+            color: #2575fc;
+            border-bottom: 3px solid #eaeaea;
+            padding-bottom: 12px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: #2575fc;
+            border-radius: 3px;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            margin: 30px 0 18px;
+            color: #6a11cb;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #6a11cb;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+        
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.09);
+        }
+        
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            margin: 25px 0;
+        }
+        
+        .controls {
+            flex: 1;
+            min-width: 320px;
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #2575fc;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .visualization {
+            flex: 2;
+            min-width: 320px;
+            background: #f0f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #6a11cb;
+            min-height: 320px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .visualization-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+        
+        .visualization-title::before {
+            content: "⬤";
+            color: #6a11cb;
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #444;
+            font-size: 1.05rem;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #2575fc;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+        
+        .code-display {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            border-left: 4px solid #2575fc;
+        }
+        
+        .code-display::before {
+            content: "CSS Code";
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 600;
+        }
+        
+        /* Flexbox Styles */
+        .flex-container {
+            display: flex;
+            border: 2px dashed #2575fc;
+            padding: 20px;
+            min-height: 220px;
+            background: rgba(37, 117, 252, 0.05);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            flex: 1;
+        }
+        
+        .flex-item {
+            background: #6a11cb;
+            color: white;
+            padding: 20px;
+            margin: 8px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 90px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flex-item:nth-child(2) {
+            background: #2575fc;
+        }
+        
+        .flex-item:nth-child(3) {
+            background: #00b09b;
+        }
+        
+        .flex-item:nth-child(4) {
+            background: #ff5e62;
+        }
+        
+        .flex-item:nth-child(5) {
+            background: #ffa62e;
+        }
+        
+        /* Grid Styles */
+        .grid-container {
+            display: grid;
+            border: 2px dashed #ff5e62;
+            padding: 20px;
+            min-height: 320px;
+            background: rgba(255, 94, 98, 0.05);
+            gap: 12px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            flex: 1;
+        }
+        
+        .grid-item {
+            background: #00b09b;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .grid-item:nth-child(2) {
+            background: #ffa62e;
+        }
+        
+        .grid-item:nth-child(3) {
+            background: #6a11cb;
+        }
+        
+        .grid-item:nth-child(4) {
+            background: #2575fc;
+        }
+        
+        .grid-item:nth-child(5) {
+            background: #ff5e62;
+        }
+        
+        .grid-item:nth-child(6) {
+            background: #00b09b;
+        }
+        
+        /* Slider Styles */
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #2575fc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #1a5fd8;
+        }
+        
+        .slider-value {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: 600;
+            color: #2575fc;
+            min-width: 40px;
+        }
+        
+        /* Property Highlight */
+        .highlight {
+            background-color: #e3f2fd;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1565c0;
+            border: 1px solid #bbdefb;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .info-box strong {
+            color: #2e7d32;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .demo-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+        }
+        
+        /* Animation for items */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .flex-item:hover, .grid-item:hover {
+            animation: pulse 0.5s ease;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        
+        .tab-btn.active {
+            color: #2575fc;
+            border-bottom: 3px solid #2575fc;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Flexbox & Grid Visual Learning Tool</h1>
+        <p class="subtitle">Interactive demonstrations to help you master modern CSS layout systems with real-time visual feedback</p>
+    </header>
+
+    <section id="introduction">
+        <h2>Welcome to CSS Layout Mastery</h2>
+        <p>This interactive tool helps you understand and experiment with CSS Flexbox and Grid - the two most powerful layout systems in modern web development. Each section includes live demos where you can adjust properties and immediately see the results.</p>
+        
+        <div class="info-box">
+            <p><strong>Tip:</strong> Start with Flexbox for one-dimensional layouts (rows or columns), then move to Grid for complex two-dimensional layouts.</p>
+        </div>
+    </section>
+
+    <section id="flexbox-intro">
+        <h2>CSS Flexbox: One-Dimensional Layouts</h2>
+        <p>Flexbox is designed for one-dimensional layouts, meaning it can handle either rows or columns at a time. It excels at distributing space and aligning content within a container, making it perfect for component-level layouts like navigation bars, cards, and form controls.</p>
+        
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="flex-direction">Flex Direction</button>
+            <button class="tab-btn" data-tab="justify-content">Justify Content</button>
+            <button class="tab-btn" data-tab="align-items">Align Items</button>
+            <button class="tab-btn" data-tab="flex-items">Flex Items</button>
+        </div>
+        
+        <div class="tab-content active" id="flex-direction">
+            <h3>Flex Direction</h3>
+            <p>The <span class="highlight">flex-direction</span> property defines the main axis along which flex items are placed. This determines the direction items flow in the container.</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="flexDirection">Flex Direction:</label>
+                        <select id="flexDirection">
+                            <option value="row">row (default) - left to right</option>
+                            <option value="row-reverse">row-reverse - right to left</option>
+                            <option value="column">column - top to bottom</option>
+                            <option value="column-reverse">column-reverse - bottom to top</option>
+                        </select>
+                    </div>
+                    <div class="code-display" id="flexDirectionCode">
+.container {
+  display: flex;
+  flex-direction: row;
+}
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="flex-container" id="flexDirectionDemo">
+                        <div class="flex-item">1</div>
+                        <div class="flex-item">2</div>
+                        <div class="flex-item">3</div>
+                        <div class="flex-item">4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="justify-content">
+            <h3>Justify Content</h3>
+            <p>The <span class="highlight">justify-content</span> property aligns flex items along the main axis (defined by flex-direction). It controls how extra space is distributed between items.</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="justifyContent">Justify Content:</label>
+                        <select id="justifyContent">
+                            <option value="flex-start">flex-start (default) - items packed at start</option>
+                            <option value="flex-end">flex-end - items packed at end</option>
+                            <option value="center">center - items centered</option>
+                            <option value="space-between">space-between - equal space between items</option>
+                            <option value="space-around">space-around - equal space around items</option>
+                            <option value="space-evenly">space-evenly - equal space around and between</option>
+                        </select>
+                    </div>
+                    <div class="code-display" id="justifyContentCode">
+.container {
+  display: flex;
+  justify-content: flex-start;
+}
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="flex-container" id="justifyContentDemo">
+                        <div class="flex-item">1</div>
+                        <div class="flex-item">2</div>
+                        <div class="flex-item">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="align-items">
+            <h3>Align Items</h3>
+            <p>The <span class="highlight">align-items</span> property defines how flex items are laid out along the cross axis (perpendicular to the main axis). It's particularly useful for vertical alignment.</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="alignItems">Align Items:</label>
+                        <select id="alignItems">
+                            <option value="stretch">stretch (default) - items fill container</option>
+                            <option value="flex-start">flex-start - items aligned to start</option>
+                            <option value="flex-end">flex-end - items aligned to end</option>
+                            <option value="center">center - items centered</option>
+                            <option value="baseline">baseline - items aligned by text baseline</option>
+                        </select>
+                    </div>
+                    <div class="code-display" id="alignItemsCode">
+.container {
+  display: flex;
+  align-items: stretch;
+}
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="flex-container" id="alignItemsDemo" style="min-height: 250px;">
+                        <div class="flex-item" style="padding: 25px 15px;">Item 1</div>
+                        <div class="flex-item" style="padding: 35px 15px;">Item 2</div>
+                        <div class="flex-item" style="padding: 20px 15px;">Item 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="flex-items">
+            <h3>Flex Item Properties</h3>
+            <p>Individual flex items can be controlled with properties like <span class="highlight">flex-grow</span> (how much an item can grow), <span class="highlight">flex-shrink</span> (how much an item can shrink), and <span class="highlight">order</span> (visual order of items).</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="itemGrow">Item 2 Flex Grow:</label>
+                        <input type="range" id="itemGrow" min="0" max="3" step="0.1" value="0">
+                        <span class="slider-value" id="growValue">0</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="itemOrder">Item 3 Order:</label>
+                        <input type="range" id="itemOrder" min="-1" max="3" step="1" value="0">
+                        <span class="slider-value" id="orderValue">0</span>
+                    </div>
+                    <div class="code-display" id="flexItemCode">
+.item2 {
+  flex-grow: 0;
+}
+
+.item3 {
+  order: 0;
+}
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="flex-container" id="flexItemDemo">
+                        <div class="flex-item">Item 1</div>
+                        <div class="flex-item" id="growItem">Item 2</div>
+                        <div class="flex-item" id="orderItem">Item 3</div>
+                        <div class="flex-item">Item 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="grid-intro">
+        <h2>CSS Grid: Two-Dimensional Layouts</h2>
+        <p>CSS Grid is a powerful two-dimensional layout system that handles both rows and columns simultaneously. It's ideal for complex page layouts, card grids, and any design that requires precise control over both dimensions.</p>
+        
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="basic-grid">Basic Grid</button>
+            <button class="tab-btn" data-tab="grid-areas">Grid Areas</button>
+            <button class="tab-btn" data-tab="advanced-grid">Advanced Grid</button>
+        </div>
+        
+        <div class="tab-content active" id="basic-grid">
+            <h3>Basic Grid Layout</h3>
+            <p>Define columns and rows using <span class="highlight">grid-template-columns</span> and <span class="highlight">grid-template-rows</span>. The fr unit represents a fraction of the available space.</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="gridColumns">Grid Template Columns:</label>
+                        <select id="gridColumns">
+                            <option value="1fr 1fr">1fr 1fr (2 equal columns)</option>
+                            <option value="1fr 2fr 1fr">1fr 2fr 1fr (3 columns, middle wider)</option>
+                            <option value="repeat(3, 1fr)">repeat(3, 1fr) (3 equal columns)</option>
+                            <option value="100px 1fr 2fr">100px 1fr 2fr (fixed + flexible)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="gridRows">Grid Template Rows:</label>
+                        <select id="gridRows">
+                            <option value="auto auto">auto auto (2 rows)</option>
+                            <option value="100px 200px">100px 200px (fixed height rows)</option>
+                            <option value="1fr 2fr">1fr 2fr (2 flexible rows)</option>
+                            <option value="repeat(2, 1fr)">repeat(2, 1fr) (2 equal rows)</option>
+                        </select>
+                    </div>
+                    <div class="code-display" id="basicGridCode">
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="grid-container" id="basicGridDemo">
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item">5</div>
+                        <div class="grid-item">6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="grid-areas">
+            <h3>Grid Areas</h3>
+            <p>Use <span class="highlight">grid-template-areas</span> to create named areas and place items using <span class="highlight">grid-area</span>. This approach makes complex layouts more readable and maintainable.</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="gridAreas">Grid Template Areas:</label>
+                        <select id="gridAreas">
+                            <option value="header header header, sidebar content content, footer footer footer">Header, Sidebar, Content, Footer</option>
+                            <option value="nav nav nav, main main aside, main main aside">Nav, Main, Aside</option>
+                            <option value="a b c, d e f, g h i">3x3 Grid</option>
+                        </select>
+                    </div>
+                    <div class="code-display" id="gridAreasCode">
+.container {
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="grid-container" id="gridAreasDemo" style="grid-template-rows: 60px 1fr 60px; height: 300px;">
+                        <div class="grid-item" style="background: #ff5e62; grid-area: header;">Header</div>
+                        <div class="grid-item" style="background: #ffa62e; grid-area: sidebar;">Sidebar</div>
+                        <div class="grid-item" style="background: #00b09b; grid-area: content;">Content</div>
+                        <div class="grid-item" style="background: #6a11cb; grid-area: footer;">Footer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="advanced-grid">
+            <h3>Advanced Grid: Auto-fit & Minmax</h3>
+            <p>Create responsive layouts with <span class="highlight">repeat(auto-fit, minmax())</span> that automatically adjusts to container size. Auto-fit will create as many tracks as can fit without overflowing.</p>
+            
+            <div class="demo-container">
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="autoFitMin">Min Width (px):</label>
+                        <input type="range" id="autoFitMin" min="100" max="300" step="10" value="150">
+                        <span class="slider-value" id="minValue">150px</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="autoFitMax">Max Width:</label>
+                        <select id="autoFitMax">
+                            <option value="1fr">1fr (flexible)</option>
+                            <option value="200px">200px (fixed)</option>
+                            <option value="300px">300px (larger fixed)</option>
+                        </select>
+                    </div>
+                    <div class="code-display" id="advancedGridCode">
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+                    </div>
+                </div>
+                <div class="visualization">
+                    <div class="visualization-title">Visual Demonstration</div>
+                    <div class="grid-container" id="advancedGridDemo" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item">Item 4</div>
+                        <div class="grid-item">Item 5</div>
+                        <div class="grid-item">Item 6</div>
+                    </div>
+                    <p style="margin-top: 15px; font-style: italic; color: #666;">Try resizing your browser window to see how auto-fit creates a responsive layout!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusion">
+        <h2>Next Steps in Your CSS Journey</h2>
+        <p>Now that you've experimented with Flexbox and Grid, you're well on your way to mastering modern CSS layouts. Remember that these systems work well together - use Flexbox for component-level layouts and Grid for page-level layouts.</p>
+        
+        <div class="info-box">
+            <p><strong>Practice Tip:</strong> Try recreating common layouts like navigation menus, card grids, and magazine-style pages using both Flexbox and Grid to understand their strengths.</p>
+        </div>
+    </section>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Flex Direction Demo
+        document.getElementById('flexDirection').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('flexDirectionDemo').style.flexDirection = value;
+            document.getElementById('flexDirectionCode').textContent = `.container {\n  display: flex;\n  flex-direction: ${value};\n}`;
+        });
+
+        // Justify Content Demo
+        document.getElementById('justifyContent').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('justifyContentDemo').style.justifyContent = value;
+            document.getElementById('justifyContentCode').textContent = `.container {\n  display: flex;\n  justify-content: ${value};\n}`;
+        });
+
+        // Align Items Demo
+        document.getElementById('alignItems').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('alignItemsDemo').style.alignItems = value;
+            document.getElementById('alignItemsCode').textContent = `.container {\n  display: flex;\n  align-items: ${value};\n}`;
+        });
+
+        // Flex Item Properties Demo
+        const growSlider = document.getElementById('itemGrow');
+        const orderSlider = document.getElementById('itemOrder');
+        const growValue = document.getElementById('growValue');
+        const orderValue = document.getElementById('orderValue');
+        const growItem = document.getElementById('growItem');
+        const orderItem = document.getElementById('orderItem');
+
+        growSlider.addEventListener('input', function() {
+            const value = this.value;
+            growValue.textContent = value;
+            growItem.style.flexGrow = value;
+            updateFlexItemCode();
+        });
+
+        orderSlider.addEventListener('input', function() {
+            const value = this.value;
+            orderValue.textContent = value;
+            orderItem.style.order = value;
+            updateFlexItemCode();
+        });
+
+        function updateFlexItemCode() {
+            document.getElementById('flexItemCode').textContent = `.item2 {\n  flex-grow: ${growSlider.value};\n}\n\n.item3 {\n  order: ${orderSlider.value};\n}`;
+        }
+
+        // Basic Grid Demo
+        document.getElementById('gridColumns').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('basicGridDemo').style.gridTemplateColumns = value;
+            updateBasicGridCode();
+        });
+
+        document.getElementById('gridRows').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('basicGridDemo').style.gridTemplateRows = value;
+            updateBasicGridCode();
+        });
+
+        function updateBasicGridCode() {
+            const columns = document.getElementById('gridColumns').value;
+            const rows = document.getElementById('gridRows').value;
+            document.getElementById('basicGridCode').textContent = `.container {\n  display: grid;\n  grid-template-columns: ${columns};\n  grid-template-rows: ${rows};\n}`;
+        }
+
+        // Grid Areas Demo
+        document.getElementById('gridAreas').addEventListener('change', function() {
+            const value = this.value;
+            const areas = value.split(', ').map(row => `"${row}"`).join('\n    ');
+            document.getElementById('gridAreasDemo').style.gridTemplateAreas = value.split(', ').map(row => `"${row}"`).join(' ');
+            
+            document.getElementById('gridAreasCode').textContent = `.container {\n  display: grid;\n  grid-template-areas: \n    ${areas};\n}\n\n.header { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n.content { grid-area: content; }\n.footer { grid-area: footer; }`;
+        });
+
+        // Advanced Grid Demo
+        const minSlider = document.getElementById('autoFitMin');
+        const maxSelect = document.getElementById('autoFitMax');
+        const minValue = document.getElementById('minValue');
+
+        minSlider.addEventListener('input', function() {
+            const value = this.value;
+            minValue.textContent = `${value}px`;
+            updateAdvancedGrid();
+        });
+
+        maxSelect.addEventListener('change', function() {
+            updateAdvancedGrid();
+        });
+
+        function updateAdvancedGrid() {
+            const min = minSlider.value;
+            const max = maxSelect.value;
+            document.getElementById('advancedGridDemo').style.gridTemplateColumns = `repeat(auto-fit, minmax(${min}px, ${max}))`;
+            document.getElementById('advancedGridCode').textContent = `.container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(${min}px, ${max}));\n}`;
+        }
+    </script>
+</body>
+</html>

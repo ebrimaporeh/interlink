@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox & Grid Visual Learning Tool</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: #2575fc;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: #6a11cb;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .controls {
+            flex: 1;
+            min-width: 300px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2575fc;
+        }
+        
+        .visualization {
+            flex: 2;
+            min-width: 300px;
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #6a11cb;
+            min-height: 300px;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .code-display {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        /* Flexbox Styles */
+        .flex-container {
+            display: flex;
+            border: 2px dashed #2575fc;
+            padding: 15px;
+            min-height: 200px;
+            background: rgba(37, 117, 252, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .flex-item {
+            background: #6a11cb;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 4px;
+            text-align: center;
+            min-width: 80px;
+            transition: all 0.3s ease;
+        }
+        
+        .flex-item:nth-child(2) {
+            background: #2575fc;
+        }
+        
+        .flex-item:nth-child(3) {
+            background: #00b09b;
+        }
+        
+        .flex-item:nth-child(4) {
+            background: #ff5e62;
+        }
+        
+        .flex-item:nth-child(5) {
+            background: #ffa62e;
+        }
+        
+        /* Grid Styles */
+        .grid-container {
+            display: grid;
+            border: 2px dashed #ff5e62;
+            padding: 15px;
+            min-height: 300px;
+            background: rgba(255, 94, 98, 0.05);
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .grid-item {
+            background: #00b09b;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .grid-item:nth-child(2) {
+            background: #ffa62e;
+        }
+        
+        .grid-item:nth-child(3) {
+            background: #6a11cb;
+        }
+        
+        .grid-item:nth-child(4) {
+            background: #2575fc;
+        }
+        
+        .grid-item:nth-child(5) {
+            background: #ff5e62;
+        }
+        
+        .grid-item:nth-child(6) {
+            background: #00b09b;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .demo-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Flexbox & Grid Visual Learning Tool</h1>
+        <p>Interactive demonstrations to help you understand CSS layout systems</p>
+    </header>
+
+    <section id="flexbox-intro">
+        <h2>CSS Flexbox</h2>
+        <p>Flexbox is a one-dimensional layout method for arranging items in rows or columns. It's perfect for component-level layouts where you need to align items in a single direction.</p>
+    </section>
+
+    <section id="flex-direction">
+        <h3>Flex Direction</h3>
+        <p>The <span class="highlight">flex-direction</span> property defines the main axis along which flex items are placed.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="flexDirection">Flex Direction:</label>
+                    <select id="flexDirection">
+                        <option value="row">row (default)</option>
+                        <option value="row-reverse">row-reverse</option>
+                        <option value="column">column</option>
+                        <option value="column-reverse">column-reverse</option>
+                    </select>
+                </div>
+                <div class="code-display" id="flexDirectionCode">
+.container {
+  display: flex;
+  flex-direction: row;
+}
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="flex-container" id="flexDirectionDemo">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                    <div class="flex-item">4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="justify-content">
+        <h3>Justify Content</h3>
+        <p>The <span class="highlight">justify-content</span> property aligns flex items along the main axis.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="justifyContent">Justify Content:</label>
+                    <select id="justifyContent">
+                        <option value="flex-start">flex-start (default)</option>
+                        <option value="flex-end">flex-end</option>
+                        <option value="center">center</option>
+                        <option value="space-between">space-between</option>
+                        <option value="space-around">space-around</option>
+                        <option value="space-evenly">space-evenly</option>
+                    </select>
+                </div>
+                <div class="code-display" id="justifyContentCode">
+.container {
+  display: flex;
+  justify-content: flex-start;
+}
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="flex-container" id="justifyContentDemo">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="align-items">
+        <h3>Align Items</h3>
+        <p>The <span class="highlight">align-items</span> property defines how flex items are laid out along the cross axis.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="alignItems">Align Items:</label>
+                    <select id="alignItems">
+                        <option value="stretch">stretch (default)</option>
+                        <option value="flex-start">flex-start</option>
+                        <option value="flex-end">flex-end</option>
+                        <option value="center">center</option>
+                        <option value="baseline">baseline</option>
+                    </select>
+                </div>
+                <div class="code-display" id="alignItemsCode">
+.container {
+  display: flex;
+  align-items: stretch;
+}
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="flex-container" id="alignItemsDemo" style="min-height: 250px;">
+                    <div class="flex-item" style="padding: 25px 15px;">Item 1</div>
+                    <div class="flex-item" style="padding: 35px 15px;">Item 2</div>
+                    <div class="flex-item" style="padding: 20px 15px;">Item 3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flex-item-properties">
+        <h3>Flex Item Properties</h3>
+        <p>Individual flex items can be controlled with properties like <span class="highlight">flex-grow</span>, <span class="highlight">flex-shrink</span>, and <span class="highlight">order</span>.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="itemGrow">Item 2 Flex Grow:</label>
+                    <input type="range" id="itemGrow" min="0" max="3" step="0.1" value="0">
+                    <span id="growValue">0</span>
+                </div>
+                <div class="control-group">
+                    <label for="itemOrder">Item 3 Order:</label>
+                    <input type="range" id="itemOrder" min="-1" max="3" step="1" value="0">
+                    <span id="orderValue">0</span>
+                </div>
+                <div class="code-display" id="flexItemCode">
+.item2 {
+  flex-grow: 0;
+}
+
+.item3 {
+  order: 0;
+}
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="flex-container" id="flexItemDemo">
+                    <div class="flex-item">Item 1</div>
+                    <div class="flex-item" id="growItem">Item 2</div>
+                    <div class="flex-item" id="orderItem">Item 3</div>
+                    <div class="flex-item">Item 4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="grid-intro">
+        <h2>CSS Grid</h2>
+        <p>CSS Grid is a two-dimensional layout system that handles both rows and columns. It's ideal for page-level layouts and complex component arrangements.</p>
+    </section>
+
+    <section id="basic-grid">
+        <h3>Basic Grid Layout</h3>
+        <p>Define columns and rows using <span class="highlight">grid-template-columns</span> and <span class="highlight">grid-template-rows</span>.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="gridColumns">Grid Template Columns:</label>
+                    <select id="gridColumns">
+                        <option value="1fr 1fr">1fr 1fr (2 equal columns)</option>
+                        <option value="1fr 2fr 1fr">1fr 2fr 1fr (3 columns, middle wider)</option>
+                        <option value="repeat(3, 1fr)">repeat(3, 1fr) (3 equal columns)</option>
+                        <option value="100px 1fr 2fr">100px 1fr 2fr (fixed + flexible)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="gridRows">Grid Template Rows:</label>
+                    <select id="gridRows">
+                        <option value="auto auto">auto auto (2 rows)</option>
+                        <option value="100px 200px">100px 200px (fixed height rows)</option>
+                        <option value="1fr 2fr">1fr 2fr (2 flexible rows)</option>
+                        <option value="repeat(2, 1fr)">repeat(2, 1fr) (2 equal rows)</option>
+                    </select>
+                </div>
+                <div class="code-display" id="basicGridCode">
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="grid-container" id="basicGridDemo">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">6</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="grid-areas">
+        <h3>Grid Areas</h3>
+        <p>Use <span class="highlight">grid-template-areas</span> to create named areas and place items using <span class="highlight">grid-area</span>.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="gridAreas">Grid Template Areas:</label>
+                    <select id="gridAreas">
+                        <option value="header header header, sidebar content content, footer footer footer">Header, Sidebar, Content, Footer</option>
+                        <option value="nav nav nav, main main aside, main main aside">Nav, Main, Aside</option>
+                        <option value="a b c, d e f, g h i">3x3 Grid</option>
+                    </select>
+                </div>
+                <div class="code-display" id="gridAreasCode">
+.container {
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="grid-container" id="gridAreasDemo" style="grid-template-rows: 60px 1fr 60px; height: 300px;">
+                    <div class="grid-item" style="background: #ff5e62; grid-area: header;">Header</div>
+                    <div class="grid-item" style="background: #ffa62e; grid-area: sidebar;">Sidebar</div>
+                    <div class="grid-item" style="background: #00b09b; grid-area: content;">Content</div>
+                    <div class="grid-item" style="background: #6a11cb; grid-area: footer;">Footer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advanced-grid">
+        <h3>Advanced Grid: Auto-fit & Minmax</h3>
+        <p>Create responsive layouts with <span class="highlight">repeat(auto-fit, minmax())</span> that automatically adjusts to container size.</p>
+        
+        <div class="demo-container">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="autoFitMin">Min Width (px):</label>
+                    <input type="range" id="autoFitMin" min="100" max="300" step="10" value="150">
+                    <span id="minValue">150px</span>
+                </div>
+                <div class="control-group">
+                    <label for="autoFitMax">Max Width:</label>
+                    <select id="autoFitMax">
+                        <option value="1fr">1fr (flexible)</option>
+                        <option value="200px">200px (fixed)</option>
+                        <option value="300px">300px (larger fixed)</option>
+                    </select>
+                </div>
+                <div class="code-display" id="advancedGridCode">
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="grid-container" id="advancedGridDemo" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="grid-item">Item 1</div>
+                    <div class="grid-item">Item 2</div>
+                    <div class="grid-item">Item 3</div>
+                    <div class="grid-item">Item 4</div>
+                    <div class="grid-item">Item 5</div>
+                    <div class="grid-item">Item 6</div>
+                </div>
+                <p style="margin-top: 15px; font-style: italic;">Try resizing your browser window to see how auto-fit works!</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Flex Direction Demo
+        document.getElementById('flexDirection').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('flexDirectionDemo').style.flexDirection = value;
+            document.getElementById('flexDirectionCode').textContent = `.container {\n  display: flex;\n  flex-direction: ${value};\n}`;
+        });
+
+        // Justify Content Demo
+        document.getElementById('justifyContent').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('justifyContentDemo').style.justifyContent = value;
+            document.getElementById('justifyContentCode').textContent = `.container {\n  display: flex;\n  justify-content: ${value};\n}`;
+        });
+
+        // Align Items Demo
+        document.getElementById('alignItems').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('alignItemsDemo').style.alignItems = value;
+            document.getElementById('alignItemsCode').textContent = `.container {\n  display: flex;\n  align-items: ${value};\n}`;
+        });
+
+        // Flex Item Properties Demo
+        const growSlider = document.getElementById('itemGrow');
+        const orderSlider = document.getElementById('itemOrder');
+        const growValue = document.getElementById('growValue');
+        const orderValue = document.getElementById('orderValue');
+        const growItem = document.getElementById('growItem');
+        const orderItem = document.getElementById('orderItem');
+
+        growSlider.addEventListener('input', function() {
+            const value = this.value;
+            growValue.textContent = value;
+            growItem.style.flexGrow = value;
+            updateFlexItemCode();
+        });
+
+        orderSlider.addEventListener('input', function() {
+            const value = this.value;
+            orderValue.textContent = value;
+            orderItem.style.order = value;
+            updateFlexItemCode();
+        });
+
+        function updateFlexItemCode() {
+            document.getElementById('flexItemCode').textContent = `.item2 {\n  flex-grow: ${growSlider.value};\n}\n\n.item3 {\n  order: ${orderSlider.value};\n}`;
+        }
+
+        // Basic Grid Demo
+        document.getElementById('gridColumns').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('basicGridDemo').style.gridTemplateColumns = value;
+            updateBasicGridCode();
+        });
+
+        document.getElementById('gridRows').addEventListener('change', function() {
+            const value = this.value;
+            document.getElementById('basicGridDemo').style.gridTemplateRows = value;
+            updateBasicGridCode();
+        });
+
+        function updateBasicGridCode() {
+            const columns = document.getElementById('gridColumns').value;
+            const rows = document.getElementById('gridRows').value;
+            document.getElementById('basicGridCode').textContent = `.container {\n  display: grid;\n  grid-template-columns: ${columns};\n  grid-template-rows: ${rows};\n}`;
+        }
+
+        // Grid Areas Demo
+        document.getElementById('gridAreas').addEventListener('change', function() {
+            const value = this.value;
+            const areas = value.split(', ').map(row => `"${row}"`).join('\n    ');
+            document.getElementById('gridAreasDemo').style.gridTemplateAreas = value.split(', ').map(row => `"${row}"`).join(' ');
+            
+            document.getElementById('gridAreasCode').textContent = `.container {\n  display: grid;\n  grid-template-areas: \n    ${areas};\n}\n\n.header { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n.content { grid-area: content; }\n.footer { grid-area: footer; }`;
+        });
+
+        // Advanced Grid Demo
+        const minSlider = document.getElementById('autoFitMin');
+        const maxSelect = document.getElementById('autoFitMax');
+        const minValue = document.getElementById('minValue');
+
+        minSlider.addEventListener('input', function() {
+            const value = this.value;
+            minValue.textContent = `${value}px`;
+            updateAdvancedGrid();
+        });
+
+        maxSelect.addEventListener('change', function() {
+            updateAdvancedGrid();
+        });
+
+        function updateAdvancedGrid() {
+            const min = minSlider.value;
+            const max = maxSelect.value;
+            document.getElementById('advancedGridDemo').style.gridTemplateColumns = `repeat(auto-fit, minmax(${min}px, ${max}))`;
+            document.getElementById('advancedGridCode').textContent = `.container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(${min}px, ${max}));\n}`;
+        }
+    </script>
+</body>
+</html>
